@@ -22,16 +22,22 @@ function handleButtonClick(answerState: any, question: any, setQuestions: any) {
 const Type: React.FC<Props> = ({ question, setQuestions }) => {
   const [answer, setAnswer] = useState("");
   return (
-    <div>
-      <h1>{question.question}</h1>
-      Answer:{" "}
-      <input
-        value={answer}
-        onChange={e => handleOnChange(e, setAnswer)}
-      ></input>
-      <button onClick={e => handleButtonClick(answer, question, setQuestions)}>
-        submit
-      </button>
+    <div className="margin-container">
+      <div className="question">
+        <h1>{question.question}</h1>
+        <div className="answer">
+          <input
+            value={answer}
+            onChange={e => handleOnChange(e, setAnswer)}
+          ></input>
+          <button
+            className="btn-primary"
+            onClick={e => handleButtonClick(answer, question, setQuestions)}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
