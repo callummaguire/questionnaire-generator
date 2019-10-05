@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RenderQuestionComponent from "../../render-component/render-question-component";
+import RenderedQuestionComponent from "../../render-component/render-question-component";
 
 let apiQuestions = [
   {
@@ -22,12 +22,13 @@ let apiQuestions = [
 
 const StartQuestionPage: React.FC = () => {
   const [questions, setQuestions] = useState(apiQuestions);
+  console.log("start page questions", questions);
   return (
     <div className="container-center">
-      <RenderQuestionComponent
+      <RenderedQuestionComponent
         questions={questions}
         setQuestions={setQuestions}
-      ></RenderQuestionComponent>
+      ></RenderedQuestionComponent>
     </div>
   );
 };

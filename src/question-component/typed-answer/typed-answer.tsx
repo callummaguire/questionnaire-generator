@@ -9,18 +9,21 @@ function handleOnChange(e: any, setAnswer: any) {
 }
 
 function handleButtonClick(answerState: any, question: any, setQuestions: any) {
-  console.log(answerState, question);
+  console.log("handle buton click", answerState, question);
 
   if (question.answer === answerState) {
     console.log(question);
-    setQuestions((prevState: any) => (prevState[0].completed = false));
+    setQuestions((prevState: any) => {
+      prevState[0].completed = true;
+      return [...prevState];
+    });
   } else {
     console.log("wrong!");
   }
 }
 
-const Type: React.FC<Props> = ({ question, setQuestions }) => {
-  const [answer, setAnswer] = useState("");
+const TypeAnswer: React.FC<Props> = ({ question, setQuestions }) => {
+  const [answer, setAnswer] = useState("o notation");
   return (
     <div className="margin-container">
       <div className="question">
@@ -42,4 +45,4 @@ const Type: React.FC<Props> = ({ question, setQuestions }) => {
   );
 };
 
-export default Type;
+export default TypeAnswer;

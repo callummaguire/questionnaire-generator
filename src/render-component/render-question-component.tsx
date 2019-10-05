@@ -1,5 +1,5 @@
 import React from "react";
-import QuestionType from "../question-component/typed-answer/typed-answer";
+import TypeAnswer from "../question-component/typed-answer/typed-answer";
 import MultipleChoice from "../question-component/multiple-choice/multiple-choice";
 
 interface Props {
@@ -11,6 +11,7 @@ const RenderedQuestionComponent: React.FC<Props> = ({
   questions,
   setQuestions
 }) => {
+  console.log("intial questions", questions);
   let question = findCurrentQuestion(questions);
 
   return <div>{RenderQuestionFactory(question, setQuestions)}</div>;
@@ -18,7 +19,7 @@ const RenderedQuestionComponent: React.FC<Props> = ({
 
 function RenderQuestionFactory(question: any, setQuestions: any) {
   if (question.type === "type") {
-    return <QuestionType question={question} setQuestions={setQuestions} />;
+    return <TypeAnswer question={question} setQuestions={setQuestions} />;
   }
   if (question.type === "multipleChoice") {
     return (
@@ -33,7 +34,12 @@ function RenderQuestionFactory(question: any, setQuestions: any) {
 }
 
 function findCurrentQuestion(questions: any) {
-  return questions.filter((x: any) => (x.completed ? null : x))[0];
+  console.log("filter", questions);
+  const unanswerQuestions = questions.filter((x: any) =>
+    x.completed ? null : x
+  )[0];
+  console.log("unanswer question lists", unanswerQuestions);
+  return unanswerQuestions;
 }
 
 export default RenderedQuestionComponent;
