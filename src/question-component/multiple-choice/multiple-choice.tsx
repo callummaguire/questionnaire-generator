@@ -61,12 +61,12 @@ const MultipleChoice: React.FC<Props> = ({ question, setQuestions }) => {
 
   let choice = ["hair", "green", "chocolate", "big"];
   return (
-    <div>
+    <div className="multiple-choice">
       <h1>{question.question}</h1>
       <div className="multiple-choice-grid">
         {choice.map((answer: any, index: number) => (
           <button
-            className="btn-primary"
+            className="btn-primary-no-margin"
             key={index}
             onClick={() =>
               handleButtonClick(question, answer, setQuestions, setResult)

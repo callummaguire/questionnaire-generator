@@ -157,6 +157,16 @@ header {
   }
 }
 
+.btn-primary-no-margin {
+  background: #3c5a99;
+  color: white;
+  font-size: 25px;
+  padding: 0.5rem;
+  button {
+    @include btn("50px");
+  }
+}
+
 .margin-container {
   margin: 1rem;
   padding: 1rem;
@@ -193,9 +203,13 @@ header {
     right: 1px;
   }
 }
+.multiple-choice {
+  text-align: center;
+}
 
 .multiple-choice-grid {
   display: grid;
+  margin-top: 100px;
   grid-template-columns: 150px 150px;
-  grid-gap: 30px;
+  grid-gap: 100px;
 }
