@@ -41,6 +41,14 @@ let apiQuestions = [
     type: "type",
     completed: false,
     answer: "green"
+  },
+  {
+    id: 6,
+    question: "How do you spell big?",
+    order: 6,
+    type: "multipleChoice",
+    completed: false,
+    answer: "big"
   }
 ];
 

@@ -39,8 +39,8 @@ function RenderQuestionFactory(question: any, setQuestions: any) {
   if (question.type === "multipleChoice") {
     return (
       <MultipleChoice
-        question={question.question}
-        questionAnswer={question.answer}
+        question={question}
+        setQuestions={setQuestions}
       ></MultipleChoice>
     );
   } else {

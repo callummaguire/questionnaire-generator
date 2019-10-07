@@ -193,3 +193,9 @@ header {
     right: 1px;
   }
 }
+
+.multiple-choice-grid {
+  display: grid;
+  grid-template-columns: 150px 150px;
+  grid-gap: 30px;
+}
