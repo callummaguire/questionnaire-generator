@@ -1,7 +1,9 @@
 import React from "react";
 import TypeAnswer from "../question-component/typed-answer/typed-answer";
 import MultipleChoice from "../question-component/multiple-choice/multiple-choice";
-
+import { useResultValue } from "../context/results";
+import ResultPage from "../pages/result-page";
+import QuizRunningResult from "../components/quiz-running result";
 interface Props {
   questions: any;
   setQuestions: any;
@@ -11,10 +13,23 @@ const RenderedQuestionComponent: React.FC<Props> = ({
   questions,
   setQuestions
 }) => {
-  console.log("intial questions", questions);
+  const { result, setResult } = useResultValue();
   let question = findCurrentQuestion(questions);
+  setNumberOfQuestions(setResult, result, questions);
 
-  return <div>{RenderQuestionFactory(question, setQuestions)}</div>;
+  if (
+    result.count ===
+    result.answerCorrectQuestion + result.answerIncorrectQuestion
+  ) {
+    return <ResultPage></ResultPage>;
+  } else {
+    return (
+      <div>
+        {RenderQuestionFactory(question, setQuestions)}
+        <QuizRunningResult center={false}></QuizRunningResult>
+      </div>
+    );
+  }
 };
 
 function RenderQuestionFactory(question: any, setQuestions: any) {
@@ -34,12 +49,20 @@ function RenderQuestionFactory(question: any, setQuestions: any) {
 }
 
 function findCurrentQuestion(questions: any) {
-  console.log("filter", questions);
   const unanswerQuestions = questions.filter((x: any) =>
     x.completed ? null : x
   )[0];
-  console.log("unanswer question lists", unanswerQuestions);
   return unanswerQuestions;
+}
+
+function setNumberOfQuestions(setResult: any, result: any, questions: any) {
+  if (result.count === 0) {
+    setResult({
+      answerCorrectQuestion: 0,
+      answerIncorrectQuestion: 0,
+      count: questions.length
+    });
+  }
 }
 
 export default RenderedQuestionComponent;

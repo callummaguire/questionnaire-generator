@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useResultValue } from "../../context/results";
+
 interface Props {
   question: any;
   setQuestions: any;
@@ -8,22 +10,55 @@ function handleOnChange(e: any, setAnswer: any) {
   setAnswer(e.target.value);
 }
 
-function handleButtonClick(answerState: any, question: any, setQuestions: any) {
-  console.log("handle buton click", answerState, question);
-
+function handleButtonClick(
+  answerState: any,
+  question: any,
+  setQuestions: any,
+  setResult: any
+) {
+  setCompletedQuestion(setQuestions, question);
   if (question.answer === answerState) {
-    console.log(question);
-    setQuestions((prevState: any) => {
-      prevState[0].completed = true;
-      return [...prevState];
-    });
+    correctAnswer(setResult);
   } else {
-    console.log("wrong!");
+    inCorrectAnswer(setResult);
   }
 }
 
+function correctAnswer(setResult: any) {
+  setResult((preResultState: any) => {
+    preResultState.answerCorrectQuestion =
+      preResultState.answerCorrectQuestion + 1;
+    return { ...preResultState };
+  });
+}
+function inCorrectAnswer(setResult: any) {
+  setResult((preResultState: any) => {
+    preResultState.answerIncorrectQuestion =
+      preResultState.answerIncorrectQuestion + 1;
+
+    return { ...preResultState };
+  });
+}
+
+function setCompletedQuestion(setQuestions: any, question: any) {
+  setQuestions((prevState: any) => {
+    let currentQuestion = null;
+    prevState.map((masterQuestion: any, index: any) => {
+      if (question.id === masterQuestion.id) {
+        currentQuestion = index;
+        return true;
+      }
+    });
+    if (currentQuestion != null) {
+      prevState[currentQuestion].completed = true;
+    }
+    return [...prevState];
+  });
+}
 const TypeAnswer: React.FC<Props> = ({ question, setQuestions }) => {
   const [answer, setAnswer] = useState("o notation");
+  const { result, setResult } = useResultValue();
+  console.log(result);
   return (
     <div className="margin-container">
       <div className="question">
@@ -35,7 +70,9 @@ const TypeAnswer: React.FC<Props> = ({ question, setQuestions }) => {
           ></input>
           <button
             className="btn-primary"
-            onClick={e => handleButtonClick(answer, question, setQuestions)}
+            onClick={e =>
+              handleButtonClick(answer, question, setQuestions, setResult)
+            }
           >
             Submit
           </button>
