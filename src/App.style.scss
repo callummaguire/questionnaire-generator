@@ -213,3 +213,18 @@ header {
   grid-template-columns: 150px 150px;
   grid-gap: 100px;
 }
+
+.login {
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  padding: 1rem;
+  box-shadow: 5px 10px 8px #888888;
+  height: 300px;
+  width: 300px;
+}

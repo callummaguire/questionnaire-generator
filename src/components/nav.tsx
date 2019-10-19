@@ -13,7 +13,6 @@ const Nav = () => {
                 <FaCog></FaCog>
               </span>
             </li>
-            <li></li>
           </ul>
         </div>
       </nav>
