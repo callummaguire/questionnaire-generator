@@ -6,21 +6,21 @@ interface Props {
   setQuestions: any;
 }
 
+function handleOnChange(e: any, setAnswer: any) {
+  setAnswer(e.target.value);
+}
+
 function handleButtonClick(
+  answerState: any,
   question: any,
-  answer: any,
   setQuestions: any,
   setResult: any
 ) {
   setCompletedQuestion(setQuestions, question);
-
-  if (answer === question.answer) {
+  if (question.answer === answerState) {
     correctAnswer(setResult);
-
-    console.log("correct!");
   } else {
-    console.log("wrong!");
-    inCorrectAnswer(setResult);
+    iscorrectAnswer(setResult);
   }
 }
 
@@ -31,7 +31,7 @@ function correctAnswer(setResult: any) {
     return { ...preResultState };
   });
 }
-function inCorrectAnswer(setResult: any) {
+function iscorrectAnswer(setResult: any) {
   setResult((preResultState: any) => {
     preResultState.answerIncorrectQuestion =
       preResultState.answerIncorrectQuestion + 1;
@@ -55,29 +55,31 @@ function setCompletedQuestion(setQuestions: any, question: any) {
     return [...prevState];
   });
 }
-
-const MultipleChoice: React.FC<Props> = ({ question, setQuestions }) => {
-  const { setResult } = useResultValue();
-
-  let choice = ["hair", "green", "chocolate", "big"];
+const TypeAnswer: React.FC<Props> = ({ question, setQuestions }) => {
+  const [answer, setAnswer] = useState("o notation");
+  const { result, setResult } = useResultValue();
+  console.log(result);
   return (
-    <div className="multiple-choice">
-      <h1>{question.question}</h1>
-      <div className="multiple-choice-grid">
-        {choice.map((answer: any, index: number) => (
+    <div className="margin-container">
+      <div className="question">
+        <h1>{question.question}</h1>
+        <div className="answer">
+          <input
+            value={answer}
+            onChange={e => handleOnChange(e, setAnswer)}
+          ></input>
           <button
-            className="btn-primary-no-margin"
-            key={index}
-            onClick={() =>
-              handleButtonClick(question, answer, setQuestions, setResult)
+            className="btn-primary"
+            onClick={e =>
+              handleButtonClick(answer, question, setQuestions, setResult)
             }
           >
-            {answer}
+            Submit
           </button>
-        ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default MultipleChoice;
+export default TypeAnswer;

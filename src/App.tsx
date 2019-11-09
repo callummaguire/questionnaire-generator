@@ -1,5 +1,5 @@
 import React from "react";
-import Homepage from "./pages/homepage/homepage";
+import Homepage from "./pages/homepage";
 import Nav from "../src/components/nav";
 import "./App.style.scss";
 

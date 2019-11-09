@@ -1,9 +1,9 @@
 import React from "react";
-import TypeAnswer from "../question-component/typed-answer/typed-answer";
-import MultipleChoice from "../question-component/multiple-choice/multiple-choice";
-import { useResultValue } from "../context/results";
-import ResultPage from "../pages/result-page";
-import QuizRunningResult from "../components/quiz-running result";
+import TypeAnswer from "../question-type/typed-answer";
+import MultipleChoice from "../question-type/multiple-choice";
+import { useResultValue } from "../../context/results";
+import ResultPage from "../../pages/result-page";
+import QuizRunningResult from "../quiz-running result";
 interface Props {
   questions: any;
   setQuestions: any;
@@ -52,6 +52,7 @@ function findCurrentQuestion(questions: any) {
   const unanswerQuestions = questions.filter((x: any) =>
     x.completed ? null : x
   )[0];
+
   return unanswerQuestions;
 }
 

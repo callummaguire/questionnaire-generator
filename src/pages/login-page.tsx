@@ -1,5 +1,5 @@
 import React from "react";
-import FakeAuth from "../../auth/fake-auth";
+import FakeAuth from "../auth/fake-auth";
 import { RouteComponentProps } from "react-router-dom";
 
 const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {

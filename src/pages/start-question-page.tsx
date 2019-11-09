@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RenderedQuestionComponent from "../../render-component/render-question-component";
+import RenderedQuestionComponent from "../components/question/render-question-component";
 let apiQuestions = [
   {
     id: 1,
