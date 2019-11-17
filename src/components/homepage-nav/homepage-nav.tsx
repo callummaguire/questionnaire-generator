@@ -1,14 +1,28 @@
 import React from "react";
-import { FaCog } from "react-icons/fa";
+import logo from "../../assets/logo/logo-placeholder.png";
+import { FaCog, FaQuestion } from "react-icons/fa";
 
 const HomepageNav = () => {
   return (
-    <header className="header">
+    <header className="questionPageHeader">
       <nav>
         <div className="logo">
-          <img src="../../assets/logo-placeholder.png"></img>
+          <img src={logo}></img>
         </div>
-        <div className="setting"></div>
+        <div className="navContent">
+          <ul>
+            <li>
+              <a href="#">
+                <FaCog />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <FaQuestion />
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   );

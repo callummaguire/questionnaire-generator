@@ -14,7 +14,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={App} />
           <Route exact path="/login" component={LoginPage} />
-          <ProtectedRoute path="/questionpage" component={StartQuestionPage} />
+          <Route path="/questionpage" component={StartQuestionPage} />
           <Route
             path="*"
             component={() => <div className="App">404 error not found </div>}
