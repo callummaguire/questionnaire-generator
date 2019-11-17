@@ -1,12 +1,12 @@
 import React from "react";
 import Homepage from "./pages/homepage";
-import Nav from "../src/components/nav";
+import HomepageNav from "./components/homepage-nav/homepage-nav";
 import "./App.style.scss";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Nav></Nav>
+      <HomepageNav></HomepageNav>
       <Homepage></Homepage>
     </div>
   );
