@@ -1,5 +1,6 @@
 @import "components/homepage-nav/homepage-nav.scss";
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900");
+@import '~bootstrap/scss/bootstrap.scss';
 
 html {
   box-sizing: border-box;
@@ -61,9 +62,9 @@ $generic-bg: #3c5a99;
   }
 }
 
-.main-container {
-  height: 100vh;
-}
+// .main-container {
+//   height: 100vh;
+// }
 
 .container-center {
   display: flex;
