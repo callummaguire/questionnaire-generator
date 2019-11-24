@@ -6,7 +6,6 @@ import "./App.style.scss";
 const App: React.FC = () => {
   return (
     <div className="main-container">
-      <HomepageNav></HomepageNav>
       <Homepage></Homepage>
     </div>
   );
